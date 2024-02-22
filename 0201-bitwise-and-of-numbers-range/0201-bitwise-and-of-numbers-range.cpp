@@ -1,13 +1,14 @@
 class Solution {
 public:
-    // time/space: O(log(min(m, n)))/O(1)
     int rangeBitwiseAnd(int left, int right) {
-        int m = left, n = right;
-        int shift = 0;
-        while (m != n) {
-            m >>= 1, n >>= 1;
-            shift++;
+        int count = 0;
+        while(left!=right){
+            left = left >> 1;
+            right = right >> 1;
+            count ++;
         }
-        return (m << shift);
+        int res = left <<= count;
+        return res;
+        
     }
 };
