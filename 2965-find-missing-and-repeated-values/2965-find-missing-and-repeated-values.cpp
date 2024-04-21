@@ -5,23 +5,21 @@ public:
         int n2 = grid.size() * grid.size();
         unordered_set<int> seen;
 
-        // find the duplicate integer `repeat`
-        int repeat;
-        for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid[i].size(); j++) {
-                if (seen.count(grid[i][j]) != 0) 
-                    repeat = grid[i][j];
-                seen.insert(grid[i][j]);
+        // find the duplicate integer `a`
+        int a;
+        for (auto it : grid) {
+            for (auto it2 : it) {
+                if (seen.count(it2) != 0) a = it2;
+                seen.insert(it2);
             }
         }
         
-        // find the missing integer `miss`
-        int miss;
+        // find the missing integer `b`
+        int b;
         for (int num = 1; num <= n2; num++) {
-            if (seen.count(num) == 0) 
-                miss = num;
+            if (seen.count(num) == 0) b = num;
         }
         
-        return {repeat, miss};
+        return {a, b};
     }
 };
