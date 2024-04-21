@@ -3,7 +3,7 @@ public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
         
         unordered_set <int> st;
-        int n2 = grid.size() * grid.size();
+        int n = grid.size();
         int a=-1; int b=-1;
         
         for(auto it : grid){
@@ -13,7 +13,7 @@ public:
             }
         }
         
-        for(int i = 1; i<=n2; i++){
+        for(int i = 1; i<=n*n; i++){
             if(st.count(i) == 0) b=i;
         }
         
