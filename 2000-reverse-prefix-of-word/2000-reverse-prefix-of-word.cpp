@@ -1,18 +1,17 @@
 class Solution {
 public:
+    string reverse(string word, int pos){
+        int s = 0;
+        int e = pos;
+        while(s<=e){
+            swap(word[s++] , word[e--]);
+        }
+        return word;
+    }
+    
     string reversePrefix(string word, char ch) {
-        int n = word.size();
-        int pos = -1;
-        for(int i=0; i<n; i++){
-            if(word[i] == ch){
-                pos = i;
-                break;
-            }
-        }
-        int s =0;
-        while(pos>s){
-            swap(word[s++] , word[pos--]);
-        }
-       return word; 
+        int pos = word.find(ch);
+        if(pos == string::npos) return word;
+        else return reverse(word, pos);
     }
 };
