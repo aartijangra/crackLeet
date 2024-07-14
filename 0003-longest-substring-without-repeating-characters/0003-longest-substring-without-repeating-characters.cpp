@@ -4,16 +4,15 @@ public:
         int l=0; int r=0;
         int n= s.size();
         int maxlen = 0;
-        set<char> st;
+        unordered_map<char,int> mpp;
         while(r<n){
-            
-            
-            while(st.find(s[r]) != st.end()){
-                st.erase(s[l]);
+             mpp[s[r]]++;   
+            while(mpp[s[r]]>1){
+                mpp[s[l]]--;
                 l++;
                 
             }
-            st.insert(s[r]);
+            
             maxlen=max(maxlen, r-l+1);
             r++;
         }
