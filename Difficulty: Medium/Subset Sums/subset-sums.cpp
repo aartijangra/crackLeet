@@ -6,23 +6,27 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    void sumfun(int ind, vector<int>& arr, int sum, int n, vector<int>& ans){
-        if(ind==n){
-            ans.push_back(sum);
-            return;
-        }
-        sumfun(ind+1, arr, sum+arr[ind], n, ans);
-        sumfun(ind+1, arr, sum, n, ans);
-    }
+  void sumfunc(int ind, int sum, vector<int>& arr, int n, vector<int>& result){
+      if(ind == n){    //base case
+          result.push_back(sum);
+          return;
+      }
+      //pick
+      sumfunc(ind+1, sum+arr[ind], arr, n, result);
+      //not pick
+      sumfunc(ind+1, sum, arr, n, result);
+  }
     vector<int> subsetSums(vector<int> arr, int n) {
         // Write Your Code here
-        vector<int> ans;
-        sumfun(0, arr, 0, n, ans);
-        sort(ans.begin(), ans.end());
-        return ans;
-        
+        vector<int> result;
+        sumfunc(0,0,arr,n,result);
+        // sort(result.begin(), result.end());
+        return result;
     }
 };
+
+
+
 
 //{ Driver Code Starts.
 int main() {
