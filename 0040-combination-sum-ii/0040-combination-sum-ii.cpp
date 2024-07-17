@@ -3,7 +3,7 @@ public:
     void func(int ind, vector<int>& candidates, int target, vector<int>& ds, vector<vector<int>>& ans){
         if(target==0){
             ans.push_back(ds);
-            return;
+            // return;    //to stop the infinite loop
         }
         for(int i=ind; i<candidates.size(); i++){
             if(candidates[i] > target) break;
