@@ -1,23 +1,27 @@
 class Solution {
 public:
-    void fun(int ind, int target, vector<int>& candidates, vector<int>& ds, vector<vector<int>>& ans){
+    void func(int ind, vector<int>& candidates, int target, vector<int>& ds, vector<vector<int>>& ans ){
+        
         if(ind == candidates.size()){
-            if(target==0){
-                ans.push_back(ds);
-            }
+            if(target == 0) ans.push_back(ds);
             return;
         }
-        if(candidates[ind]<=target){
+        
+        //pick element
+        if(candidates[ind] <= target){
             ds.push_back(candidates[ind]);
-            fun(ind, target-candidates[ind], candidates, ds, ans);
+            func(ind, candidates, target-candidates[ind], ds, ans);
             ds.pop_back();
         }
-        fun(ind+1, target, candidates, ds, ans);
+        
+        //not picking ele
+        func(ind+1, candidates, target, ds, ans);
+        
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> ans;
         vector<int> ds;
-        fun(0,target,candidates,ds,ans);
+        vector<vector<int>> ans;
+        func(0,candidates,target,ds,ans);
         return ans;
     }
 };
