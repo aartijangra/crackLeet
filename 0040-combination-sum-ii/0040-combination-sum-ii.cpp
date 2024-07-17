@@ -5,7 +5,6 @@ public:
             ans.push_back(ds);
             return;
         }
-        
         for(int i=ind; i<candidates.size(); i++){
             if(candidates[i] > target) break;
             if(i>ind && candidates[i]==candidates[i-1]) continue;
@@ -13,8 +12,6 @@ public:
             func(i+1, candidates, target-candidates[i], ds, ans);
             ds.pop_back();
         }
-        
-        
     }
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
         sort(candidates.begin(), candidates.end());
