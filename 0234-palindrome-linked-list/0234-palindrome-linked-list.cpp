@@ -17,26 +17,24 @@ public:
             ListNode* front = temp->next;
             temp->next = prev;
             prev = temp;
-            temp = front;
+            temp=front;
         }
         return prev;
-        
     }
-    
-    
     bool isPalindrome(ListNode* head) {
-        ListNode* fast = head;
         ListNode* slow = head;
+        ListNode* fast = head;
         while(fast->next && fast->next->next){
-            slow = slow->next;
+            slow= slow->next;
             fast = fast->next->next;
         }
+        
         ListNode* newHead = Reverse(slow->next);
         
         ListNode* first = head;
         ListNode* second = newHead;
         
-        while(second != NULL){
+        while(second){
             if(first->val != second->val){
                 Reverse(newHead);
                 return false;
