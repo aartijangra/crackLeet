@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<string>> ans;
-    bool isSafe(int row, int col, int n, vector<string>& temp){
+    bool isSafe(int row, int col, vector<string>& temp, int n){
         for(int i=row-1; i>=0; i--){
             if(temp[i][col] == 'Q') return false;
         }
@@ -16,22 +16,19 @@ public:
     void solve(int n, vector<string>& temp, int row){
         if(row == n){
             ans.push_back(temp);
-            return;
+            return;    
         }
         for(int col=0; col<n; col++){
-            if(isSafe(row, col ,n,temp)){
+            if(isSafe(row, col, temp, n)){
                 temp[row][col] = 'Q';
                 solve(n, temp, row+1);
                 temp[row][col] = '.';
             }
         }
-        
     }
     vector<vector<string>> solveNQueens(int n) {
         vector<string> temp(n, string(n, '.'));
         solve(n, temp, 0);
         return ans;
-        
-    
     }
 };
